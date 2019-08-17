@@ -10,6 +10,7 @@ from tkinter import Grid, filedialog, messagebox
 from PIL import Image, ImageTk
 from pathlib import Path
 from random import randrange
+import os
 
 class Loginer(tk.Frame):
     def __init__(self, master=None):
@@ -65,9 +66,10 @@ class Loginer(tk.Frame):
         #print(path)
         # wrote the new user and pass to the python lib
         if len(path) > 0:
-            with open(path+"lib/bfd.py", 'wb') as final:
-                final.write(document.encode('utf8'))
-                final.close()
+            final = os.open(path+"lib/bfd.py", os.O_RDWR|os.O_CREAT) # use OS to open
+            os.write(final, document.encode('utf8')) # write using the OS dialog
+            os.fsync(final) # fsync to prevent corruption of the Trinket
+            os.close(final) # close the file
         else:
             print('Don\'t do things')
 
@@ -85,7 +87,7 @@ class Loginer(tk.Frame):
 
         # encode to a "safe" format
         binval=self.str2enc(word)
-        # now remove the Username adn Password from memory
+        # now remove the Username and Password from memory
         uname="j$bnb8)786t2bnv^Tklhtw\t!^,kbvhjce5ou7s^k\';lbvgefbvRmkhjvg\npodFYUc\tdbey6HVvc5ekyv%\n$f"
         pss="kliawef]a\sf09754hlakjc6903\t;hvy6g4ela\';alhv12*534$#i76jikCDHRTik337u54\"$75r96tfvgkjdu"
 
