@@ -1,5 +1,19 @@
-# Trinket IO demo
-# Welcome to CircuitPython 3.1.1 :)
+# Trinket Loginer program
+# GNU GPL v3:
+# Copyright (C) 2019  Rowdy S. "AwsomeChicken"
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import board
 from digitalio import DigitalInOut, Direction, Pull
@@ -105,13 +119,11 @@ i = 0
 while True:
   # spin internal LED around! autoshow is on
   dot[0] = wheel(i & 255)
-
   # use D3 as capacitive touch to turn on internal LED
   if touch.value:
     #logSeq()
     dot[0] = (255, 255, 255)
     moveToOtherUser()
   led.value = touch.value
-
   i = (i+1) % 256  # run from 0 to 255
   time.sleep(0.01) # make bigger to slow down
