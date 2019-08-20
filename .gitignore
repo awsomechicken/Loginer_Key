@@ -1,4 +1,6 @@
-ParentApp/build
-ParentApp/__pycache__
-parentApp/dist/Loginer Key Configurator/
-parentapp/loginer key configurator.spec
+ParentApp/
+iconSource/
+TrinketM0_loginer/
+*.uf2
+*.cdr
+*.py
