@@ -1,4 +1,6 @@
-ParentApp/
+ParentApp/build/
+ParentApp/__pycache__/
+ParentApp/Loginer Key Configurator.spec
 iconSource/
 TrinketM0_loginer/
 *.uf2
