@@ -1,4 +1,6 @@
 ParentApp/build
+ParentApp/dist
+ParentApp/build
 ParentApp/__pycache__
 parentApp/dist/Loginer Key Configurator/
 parentapp/loginer key configurator.spec
