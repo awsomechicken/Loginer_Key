@@ -9,6 +9,6 @@ PyInstaller.__main__.run([
     '--windowed',
     '--hidden-import=%s' % os.path.join('.', 'TrinketCode.py'),
     '--add-binary=icon\\icon.ico;.',
-    '--icon=%s' % 'icon.ico',
+    '--icon=%s' % 'icon\\icon.ico',
     'KeyConfigurator.py',
 ])
