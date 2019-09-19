@@ -104,8 +104,11 @@ class Loginer(tk.Frame):
         #print(path)
         # wrote the new user and pass to the python lib
         if len(path) > 0:
-            os.remove(path+"lib/bfd.py") # delete the old file
-            final = os.open(path+"lib/bfd.py", os.O_WRONLY|os.O_CREAT) # use OS to open
+            try:
+                os.remove(os.path.join(path, "lib/bfd.py")) # delete the old file
+            except:
+                pass
+            final = os.open(os.path.join(path, "lib/bfd.py"), os.O_WRONLY|os.O_CREAT) # use OS to open
             os.write(final, document.encode('utf8')) # write using the OS dialog
             self.writeCode(path) # write the code.py file
             os.fsync(final) # fsync to prevent corruption of the Trinket
@@ -117,8 +120,12 @@ class Loginer(tk.Frame):
 
     def writeCode(self, path):
         code = TrinketCode.get()
-        os.remove(path+"main.py")
-        codefile = os.open(path+"main.py", os.O_WRONLY|os.O_CREAT) # use OS to open
+        try:
+            os.remove(os.path.join(path, "main.py"))
+            os.remove(os.path.join(path, "code.py"))
+        except:
+            pass
+        codefile = os.open(os.path.join(path, "main.py"), os.O_WRONLY|os.O_CREAT) # use OS to open
         os.write(codefile, code.encode('utf8')) # write using the OS dialog
         os.fsync(codefile) # fsync to prevent corruption of the Trinket
         os.close(codefile) # close the file
